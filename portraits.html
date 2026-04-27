@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portraits - Tunisian Photography</title>
+<link rel="stylesheet" href="styles.css">
+<script src="script.js" defer></script>
+<style>
+
+:root {
+  --bg: #f5f5f5;
+  --text: #333;
+  --card: #fff;
+  --accent: #e67e22;
+  --shadow: rgba(0,0,0,0.1);
+}
+body.dark {
+  --bg: #121212;
+  --text: #eee;
+  --card: #1e1e1e;
+  --shadow: rgba(255,255,255,0.05);
+}
+
+/* Global */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  transition: all .4s ease;
+}
+
+/* Header */
+header {
+  display: flex;
+  align-items: center;
+  padding: 1rem 5%;
+  background: var(--card);
+  box-shadow: 0 2px 10px var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Nav + spacing for dark mode */
+nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+nav ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 500;
+  transition: .3s;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+/* Dark Mode Button */
+.toggle-theme {
+  border: none;
+  background: var(--accent);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: .9rem;
+  margin-left: 1rem;
+}
+
+/* Social */
+.social-fixed {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.social-fixed img {
+  width: 38px;
+}
+
+/* Title */
+.page-title {
+  text-align: center;
+  margin: 2rem 0;
+  font-size: 2.2rem;
+}
+
+/* Portfolio */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap: 1rem;
+  padding: 2rem 5%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.portfolio-item {
+  border-radius: 15px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.portfolio-item img {
+  width: 100%;
+  display: block;
+  border-radius: 15px;
+  transition: .4s ease;
+}
+
+.portfolio-item:hover img {
+  transform: scale(1.08);
+}
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.9);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90vh;
+  border-radius: 5px;
+}
+
+/* Page Navigation */
+.page-nav {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 3rem auto 4rem;
+  padding: 0 5%;
+}
+
+.page-nav button {
+  padding: .8rem 1.6rem;
+  border: none;
+  background: var(--accent);
+  color: white;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: .3s;
+}
+
+.page-nav button:hover {
+  transform: scale(1.05);
+}
+
+/* Fade In */
+.fade {
+  animation: fade .8s ease;
+}
+
+@keyframes fade {
+  from {opacity:0; transform:translateY(20px);}
+  to {opacity:1; transform:translateY(0);}
+}
+
+</style>
+</head>
+
+<body class="fade">
+
+<header>
+  <div class="logo">Tunisian Photography</div>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <button class="toggle-theme" id="themeBtn">🌙</button>
+  </nav>
+</header>
+
+<!-- Social Buttons -->
+<div class="social-fixed">
+  <!-- WhatsApp: opens chat with your number -->
+  <a href="https://wa.me/21650243344" target="_blank" rel="noopener">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
+
+  <!-- Instagram: opens your profile -->
+  <a href="https://www.instagram.com/_farah_chaabane_/" target="_blank" rel="noopener">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram">
+  </a>
+</div>
+
+
+
+<h1 class="page-title">Portraits</h1>
+
+<!-- Portfolio -->
+<div class="portfolio-grid">
+  <div class="portfolio-item"><img src="https://picsum.photos/500?101"></div>
+  <div class="portfolio-item"><img src="https://picsum.photos/500?102"></div>
+  <div class="portfolio-item"><img src="https://picsum.photos/500?103"></div>
+  <div class="portfolio-item"><img src="https://picsum.photos/500?104"></div>
+  <div class="portfolio-item"><img src="https://picsum.photos/500?105"></div>
+  <div class="portfolio-item"><img src="https://picsum.photos/500?106"></div>
+</div>
+
+<!-- Page Navigation -->
+<div class="page-nav">
+  <button id="prevBtn">⬅ Previous</button>
+  <button id="nextBtn">Next ➡</button>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox">
+  <img>
+</div>
+
+<script>
+  /* ---------------- LIGHTBOX ---------------- */
+  const lightbox = document.querySelector('.lightbox');
+  const lightboxImg = lightbox.querySelector('img');
+  
+  document.querySelectorAll('.portfolio-item img').forEach(img => {
+    img.addEventListener("click", () => {
+      lightbox.style.display = 'flex';
+      lightboxImg.src = img.src;
+    });
+  });
+  
+  lightbox.addEventListener("click", () => {
+    lightbox.style.display = 'none';
+  });
+  
+  
+  /* ---------------- DARK MODE ---------------- */
+  const themeBtn = document.getElementById('themeBtn');
+  
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add('dark');
+    themeBtn.textContent = '☀️';
+  }
+  
+  themeBtn.addEventListener("click", () => {
+  
+    document.body.classList.toggle('dark');
+  
+    if (document.body.classList.contains('dark')) {
+      localStorage.setItem("theme", "dark");
+      themeBtn.textContent = '☀️';
+    } else {
+      localStorage.setItem("theme", "light");
+      themeBtn.textContent = '🌙';
+    }
+  
+  });
+  
+  
+  /* ---------------- PAGE NAV ---------------- */
+  
+  const pages = [
+    "portraits.html",
+    "landscape.html",
+    "weddings.html",
+    "street.html"
+  ];
+  
+  // Get current filename
+  const currentPage = window.location.pathname.split("/").pop();
+  
+  // Get buttons
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  
+  // Debug (IMPORTANT)
+  console.log("Current page:", currentPage);
+  console.log("Buttons:", prevBtn, nextBtn);
+  
+  // Find index
+  let currentIndex = pages.indexOf(currentPage);
+  
+  // Fallback
+  if (currentIndex === -1) {
+    currentIndex = 0;
+  }
+  
+  // Prev
+  prevBtn.addEventListener("click", () => {
+  
+    const target =
+      pages[(currentIndex - 1 + pages.length) % pages.length];
+  
+    console.log("Going to:", target);
+  
+    window.location.href = target;
+  });
+  
+  // Next
+  nextBtn.addEventListener("click", () => {
+  
+    const target =
+      pages[(currentIndex + 1) % pages.length];
+  
+    console.log("Going to:", target);
+  
+    window.location.href = target;
+  });
+  </script>
+  

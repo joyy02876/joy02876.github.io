@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Tunisian Photography</title>
+<link rel="stylesheet" href="styles.css">
+<script src="script.js" defer></script>
+<style>
+/* Contact page specific */
+.contact-wrap {
+  max-width: 1100px;
+  margin: 6rem auto;
+  padding: 0 6%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+/* Left text */
+.contact-info h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.contact-intro {
+  max-width: 600px;
+  margin: 1.5rem auto 0;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #666;
+  text-align: center;
+}
+body.dark .contact-intro { color: #aaa; }
+
+/* Form */
+.contact-form {
+  background: var(--card);
+  padding: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px var(--shadow);
+}
+
+/* Input groups */
+.form-group { position: relative; margin-bottom: 2rem; }
+
+/* Inputs */
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 1.2rem 0;
+  border: none;
+  border-bottom: 2px solid #ddd;
+  background: transparent;
+  font-size: 1rem;
+  color: var(--text);
+  outline: none;
+  transition: .3s;
+}
+
+.form-group textarea { resize: none; height: 120px; }
+
+/* Labels */
+.form-group label {
+  position: absolute;
+  left: 0;
+  top: 1.2rem;
+  font-size: .9rem;
+  color: #777;
+  pointer-events: none;
+  transition: .3s;
+}
+
+/* Floating labels */
+.form-group input:focus + label,
+.form-group textarea:focus + label,
+.form-group input:not(:placeholder-shown) + label,
+.form-group textarea:not(:placeholder-shown) + label {
+  top: -10px;
+  font-size: .75rem;
+  color: var(--accent);
+}
+
+/* Focus line */
+.form-group input:focus,
+.form-group textarea:focus { border-color: var(--accent); }
+
+/* Button */
+.contact-form button {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  background: var(--accent);
+  color: white;
+  font-size: 1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.contact-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,.15);
+}
+
+/* Success message */
+.form-success {
+  display: none;
+  margin-top: 1.5rem;
+  color: green;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Mobile */
+@media(max-width:900px){
+  .contact-wrap { grid-template-columns: 1fr; gap: 3rem; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Tunisian Photography</div>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><button id="darkModeToggle">🌙</button></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Social Buttons -->
+<div class="social-fixed">
+  <!-- WhatsApp: opens chat with your number -->
+  <a href="https://wa.me/21650243344" target="_blank" rel="noopener">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
+
+  <!-- Instagram: opens your profile -->
+  <a href="https://www.instagram.com/_farah_chaabane_/" target="_blank" rel="noopener">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram">
+  </a>
+</div>
+
+
+<section class="contact-wrap" id="contact-content">
+
+  <!-- LEFT -->
+  <div class="contact-info">
+    <h1>Let’s Work Together</h1>
+    <p class="contact-intro">
+      Have a project in mind? Want to collaborate or book a shoot?<br>
+      Fill out the form and I’ll get back to you as soon as possible.
+    </p>
+  </div>
+
+  <!-- RIGHT -->
+  <form class="contact-form" id="contactForm">
+    <div class="form-group">
+      <input type="text" name="name" required placeholder=" ">
+      <label>Name</label>
+    </div>
+
+    <div class="form-group">
+      <input type="email" name="email" required placeholder=" ">
+      <label>Email</label>
+    </div>
+
+    <div class="form-group">
+      <input type="text" name="subject" placeholder=" ">
+      <label>Subject</label>
+    </div>
+
+    <div class="form-group">
+      <textarea name="message" required placeholder=" "></textarea>
+      <label>Message</label>
+    </div>
+
+    <button type="submit">Send Message</button>
+
+    <div class="form-success" id="successMsg">✅ Message sent successfully!</div>
+  </form>
+
+</section>
+
+<script>
+// Dark mode toggle
+const darkModeBtn = document.getElementById('darkModeToggle');
+if(localStorage.getItem('theme')==='dark'){ document.body.classList.add('dark'); darkModeBtn.textContent='☀️'; }
+darkModeBtn.addEventListener('click',()=>{
+  document.body.classList.toggle('dark');
+  if(document.body.classList.contains('dark')){ localStorage.setItem('theme','dark'); darkModeBtn.textContent='☀️'; }
+  else{ localStorage.setItem('theme','light'); darkModeBtn.textContent='🌙'; }
+});
+
+// Contact form submit
+document.getElementById('contactForm').addEventListener('submit', e=>{
+  e.preventDefault();
+  const { name, email, subject, message } = e.target;
+  window.location.href = `mailto:example@domain.com?subject=${subject.value || 'Message from '+name.value}&body=${message.value} (${email.value})`;
+  document.getElementById('successMsg').style.display = 'block';
+});
+</script>
+
+</body>
+</html>
