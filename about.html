@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About - Tunisian Photography</title>
+<link rel="stylesheet" href="about.css">
+<style>
+.about-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+  padding: 8rem 6% 6rem;
+  max-width: 1200px;
+  margin: auto;
+}
+.about-hero img {
+  width: 100%;
+  border-radius: 24px;
+}
+.about-hero-text h1 {
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 1.05;
+  margin-bottom: 2rem;
+}
+.about-hero-text p {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: #444;
+}
+body.dark .about-hero-text p { color: #aaa; }
+.gear-section {
+  max-width: 1100px;
+  margin: 6rem auto;
+  padding: 0 6%;
+}
+.gear-section h2 {
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.gear-intro {
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  text-align: center;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #555;
+}
+body.dark .gear-intro { color: #aaa; }
+.gear-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+.gear-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: all 0.4s ease;
+}
+body.dark .gear-card { background: #1e1e1e; }
+.gear-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+}
+.gear-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+.gear-card-content {
+  padding: 1.2rem;
+}
+.gear-card h4 {
+  margin: 0 0 0.4rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.gear-card p {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+}
+body.dark .gear-card p { color: #999; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Tunisian Photography</div>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><button id="darkModeToggle">🌙</button></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="social-fixed">
+  <a href="https://wa.me/21650243344" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"></a>
+  <a href="https://www.instagram.com/_farah_chaabane_/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram"></a>
+</div>
+
+<section class="about-hero">
+  <div class="about-hero-text">
+    <h1>I capture moments<br>that feel real.</h1>
+    <p>
+      My journey began with street photography — the raw authenticity of freezing a moment in time that will never happen again. 
+      That love for capturing real emotion and light still drives everything I create today.
+    </p>
+  </div>
+  <div>
+    <img src="https://picsum.photos/id/1011/800/900" alt="Farah Chaabane">
+  </div>
+</section>
+
+<section class="gear-section">
+  <h2>The Gear Behind My Work</h2>
+  <p class="gear-intro">
+    Since I started, many of you have asked about the gear I use. Below you’ll find most of the equipment I rely on.
+  </p>
+
+  <div class="gear-grid">
+    <div class="gear-card">
+      <img src="https://picsum.photos/id/106/600/400" alt="Canon EOS R">
+      <div class="gear-card-content"><h4>Canon EOS R</h4><p>Main full-frame body</p></div>
+    </div>
+    <div class="gear-card">
+      <img src="https://picsum.photos/id/107/600/400" alt="Canon EOS R6">
+      <div class="gear-card-content"><h4>Canon EOS R6</h4><p>Second body for events & video</p></div>
+    </div>
+    <div class="gear-card">
+      <img src="https://picsum.photos/id/1080/600/400" alt="Sigma 24mm">
+      <div class="gear-card-content"><h4>Sigma 24mm f/1.4 Art</h4><p>Go-to wide lens</p></div>
+    </div>
+    <div class="gear-card">
+      <img src="https://picsum.photos/id/1061/600/400" alt="Sigma 18-35">
+      <div class="gear-card-content"><h4>Sigma 18-35mm f/1.8 Art</h4><p>Versatile zoom</p></div>
+    </div>
+    <div class="gear-card">
+      <img src="https://picsum.photos/id/1062/600/400" alt="MacBook M1 Air">
+      <div class="gear-card-content"><h4>MacBook Air M1</h4><p>8GB / 512GB</p></div>
+    </div>
+    <div class="gear-card">
+      <img src="https://picsum.photos/id/1063/600/400" alt="Lark M2 Mic">
+      <div class="gear-card-content"><h4>Holy Land Lark M2</h4><p>Wireless microphone</p></div>
+    </div>
+  </div>
+</section>
+
+<script>
+// Dark mode
+const darkModeBtn = document.getElementById('darkModeToggle');
+if(localStorage.getItem('theme')==='dark'){ document.body.classList.add('dark'); darkModeBtn.textContent='☀️'; }
+darkModeBtn.addEventListener('click',()=>{
+  document.body.classList.toggle('dark');
+  if(document.body.classList.contains('dark')){
+    localStorage.setItem('theme','dark'); darkModeBtn.textContent='☀️';
+  } else {
+    localStorage.setItem('theme','light'); darkModeBtn.textContent='🌙';
+  }
+});
+</script>
+
+</body>
+</html>
