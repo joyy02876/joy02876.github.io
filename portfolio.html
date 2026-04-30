@@ -7,7 +7,6 @@
 <link rel="stylesheet" href="styles.css">
 <script src="script.js" defer></script>
 <style>
-/* Portfolio grid like old index */
 .portfolio-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
@@ -16,7 +15,6 @@
   max-width: 1200px;
   margin: auto;
 }
-
 .portfolio-item {
   position: relative;
   border-radius: 15px;
@@ -24,19 +22,15 @@
   cursor: pointer;
   transition: transform 0.3s ease;
 }
-
 .portfolio-item img {
   width: 100%;
   display: block;
   border-radius: 15px;
   transition: transform 0.4s ease;
 }
-
 .portfolio-item:hover img {
   transform: scale(1.08);
 }
-
-/* Title overlay */
 .portfolio-item span {
   position: absolute;
   top: 50%;
@@ -49,49 +43,40 @@
   text-align: center;
   pointer-events: none;
 }
-
-/* Page title */
 .page-title {
   text-align: center;
-  margin: 6rem 0 2rem; /* increased top margin to leave space under header */
+  margin: 6rem 0 2rem;
   font-size: 2.2rem;
 }
 </style>
 </head>
-<body class="fade">
+<body>
 
-<!-- Header -->
 <header>
   <div class="logo">Tunisian Photography</div>
   <nav>
     <ul>
       <li><a href="index.html">Home</a></li>
       <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="shop.html">Shop</a></li>
       <li><a href="contact.html">Contact</a></li>
       <li><button id="darkModeToggle">🌙</button></li>
     </ul>
   </nav>
 </header>
 
-<!-- Social Buttons -->
 <div class="social-fixed">
-  <!-- WhatsApp: opens chat with your number -->
   <a href="https://wa.me/21650243344" target="_blank" rel="noopener">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
   </a>
-
-  <!-- Instagram: opens your profile -->
   <a href="https://www.instagram.com/_farah_chaabane_/" target="_blank" rel="noopener">
     <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram">
   </a>
 </div>
 
-
-
-<!-- Page Title -->
 <h1 class="page-title">Portfolio</h1>
 
-<!-- Portfolio Grid -->
 <div class="portfolio-grid">
   <a href="portraits.html" class="portfolio-item">
     <img src="https://picsum.photos/500?101" alt="Portraits">
@@ -111,12 +96,10 @@
   </a>
 </div>
 
-<!-- Lightbox -->
 <div class="lightbox">
   <img>
 </div>
 
-<!-- Footer -->
 <footer>
   <p>© 2026 Tunisian Photography | All Rights Reserved</p>
 </footer>
